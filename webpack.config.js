@@ -16,8 +16,7 @@ let base = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-        include: path.resolve(__dirname,"src")
+        use: ["style-loader", "css-loader", "postcss-loader"]
       },
       {
         test: /\.scss$/,

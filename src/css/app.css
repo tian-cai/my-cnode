@@ -1,0 +1,22 @@
+body {
+    background: #f0f2f5;
+}
+.layout {
+
+}
+
+.layout .head {
+    height: 64px;
+    line-height: 64px;
+    background: #464646;
+}
+.layout .cnode-logo {
+    display: inline-block;
+    width: 220px;
+    padding-left: 15px;
+    padding-top: 4px;
+    height: 64px;
+}
+.layout .main {
+    margin-top: 20px;
+}
