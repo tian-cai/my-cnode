@@ -17,3 +17,22 @@
 .item>.item-content {
     margin-left: 50px;
 }
+.item-content-title .comment-floor {
+    position: absolute;
+    right: 10px;
+    font-size: 14px;
+    color: #2a00ff;
+}
+.item-content-body {
+    margin-top: 10px;
+}
+.item-content-meta {
+    margin-top: 10px;
+}
+.item-content-meta span {
+    font-size: 14px;
+    margin-right: 10px;
+}
+.item-content-meta span>i {
+    margin-right: 4px;
+}

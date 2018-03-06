@@ -12,3 +12,22 @@
   clear: both;
   zoom:1;
 }
+.mt20 {
+  margin-top: 20px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.block-title {
+  padding: 12px 10px;
+  background-color: #d9d9d9;
+}
+.bread-split {
+  margin: 0 5px;
+}

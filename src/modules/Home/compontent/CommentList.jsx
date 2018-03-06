@@ -11,7 +11,7 @@ class CommentList extends React.Component {
     return (
       <ul>
         {commentList && commentList.map((ele,index) => {
-          return <Comment key={index} comment={ele} />
+          return <Comment key={index} comment={ele} floor={index} />
         })}
       </ul>
     );

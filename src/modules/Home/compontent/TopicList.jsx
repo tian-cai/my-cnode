@@ -18,12 +18,12 @@ class TopicList extends React.Component {
   getTopicList(params) {
     let url = nodeUrl + "/api/v1/topics"; 
     let that = this;
-    service.getTopicList(url, params, function(response) {
+    service.commonGet(url, params, function(response) {
       that.setState({
         topicList: response.data.data
       })
     }, function(error) {
-      message.error(error);
+      message.error(error)
     })
   }
   //改变页码
@@ -58,7 +58,6 @@ class TopicList extends React.Component {
     let topicList = this.state.topicList;
     let tab = [
         {name:"全部", value:"all"},
-        {name:"精华", value:"good"},
         {name:"分享", value:"share"},
         {name:"问答", value:"ask"},
         {name:"招聘", value:"job"},
@@ -66,9 +65,9 @@ class TopicList extends React.Component {
     ]
     return (
       <div>
-        <nav>
+        <nav className="block-title">
           {tab.map((ele,index) => {
-            return <a key={index} onClick={this.changeTab.bind(this,ele.value)}>{ele.name}</a>
+            return <a className="mr20" key={index} onClick={this.changeTab.bind(this,ele.value)}>{ele.name}</a>
           })}
         </nav>
         <ul>

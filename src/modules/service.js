@@ -2,14 +2,23 @@ import axios from "axios"
 let nodeUrl = " https://cnodejs.org";
 let nodeService = {
     nodeUrl,
-    getTopicList
+    commonGet,
+    commonPost
 }
 
-//获取主题列表
-function getTopicList(url, params, callback,errorCallback) {
-    axios.get(url,{
-        params
+//通用get方法
+function commonGet(url, params, callback,errorCallback) {
+    axios.get(url,{params})
+    .then((response) => {
+        callback(response)
     })
+    .catch((error) => {
+        errorCallback && errorCallback(error)
+    })
+}
+//通过post方法
+function commonPost(url, params, callback,errorCallback) {
+    axios.post(url, params)
     .then((response) => {
         callback(response)
     })
@@ -18,16 +27,4 @@ function getTopicList(url, params, callback,errorCallback) {
     })
 }
 
-//获取指定主题详情
-function getTopicDetail(url, params, callback,errorCallback) {
-    axios.get(url,{
-        params
-    })
-    .then((response) => {
-        callback(response)
-    })
-    .catch((error) => {
-        errorCallback && errorCallback(error)
-    })
-}
 export default nodeService;
