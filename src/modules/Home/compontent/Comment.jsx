@@ -1,11 +1,48 @@
 import React from "react"
+import axios from "axios"
 import "./topic.css"
 import { Link } from "react-router-dom";
+import { message } from 'antd'
+import service from "./../../service.js"
+import util from "./../../util/util.js"
+
 
 class Comment extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      replyId: this.props.comment.id,
+      upsLength: this.props.comment.ups.length
+    }
+    this.goodReply = this.goodReply.bind(this)
   }
+  goodReply() {
+    let isLogin = util.isLogin();
+    if (!isLogin) {
+      alert('请登录再进行操作');
+      return false
+    }
+    let url = service.GOOD_REPLY.replace('{replyId}',this.props.comment.id)
+    let that = this
+    axios.post(url,{
+      accesstoken: localStorage.getItem('user')
+    }).then((response) => {
+      if (response.data.action == "down") {
+        that.setState({
+          upsLength: that.state.upsLength-1
+        })
+      } else {
+        that.setState({
+          upsLength: that.state.upsLength+1
+        })
+      }
+      message.success('操作成功')
+    })
+    .catch((error) => {
+      message.error(error)
+    })
+  }
+
 
   render() {
     let {comment,floor} = this.props
@@ -23,7 +60,7 @@ class Comment extends React.Component {
             <p dangerouslySetInnerHTML={{__html: comment.content}}></p>
           </div>
           <div className="item-content-meta">
-            <span><i className="iconfont icon-dianzan" title={`点赞数:${comment.ups.length}`}></i>{comment.ups.length}</span>
+            <span onClick={this.goodReply}><i className="iconfont icon-dianzan" title={`点赞数:${this.state.upsLength}`}></i>{this.state.upsLength}</span>
             <span><i className="iconfont icon-huifu" title={`回复`}></i>回复</span>
             <span><i className="iconfont icon-shijian" title={`创建时间:${comment.create_at}`}></i>{comment.create_at}</span>
           </div>

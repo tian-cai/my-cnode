@@ -1,8 +1,9 @@
 import React from "react"
+import axios from "axios"
 import service from "./../../service.js"
 import { message, Pagination  } from 'antd'
 import Topic from "./Topic.jsx"
-let nodeUrl = service.nodeUrl
+
 class TopicList extends React.Component {
   constructor(props) {
     super(props);
@@ -16,15 +17,17 @@ class TopicList extends React.Component {
 
   //获取主题
   getTopicList(params) {
-    let url = nodeUrl + "/api/v1/topics"; 
+    let url = service.GET_TOPICS; 
     let that = this;
-    service.commonGet(url, params, function(response) {
-      that.setState({
-        topicList: response.data.data
+    axios.get(url, {params})
+      .then((response) => {
+        that.setState({
+          topicList: response.data.data
+        })
       })
-    }, function(error) {
-      message.error(error)
-    })
+      .catch((error) => {
+        message.error(error)
+      }) 
   }
   //改变页码
   changePage(page, pageSize) {

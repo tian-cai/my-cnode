@@ -1,18 +1,22 @@
-.item {
+.item, .topic-detail-head {
     position: relative;
     padding: 10px;
     border-top: 1px solid #eee;
     background: #fff;
+    list-style: none;
 }
 .item:first-child {
     border-top: none;
 }
 
-.item>a>img {
+.item>a>img, .ava{
     width: 40px;
     height: 40px;
     border-radius: 50%;
     border: 1px solid #9E9E9E;
+}
+.ava {
+    vertical-align: middle;
 }
 .item>.item-content {
     margin-left: 50px;
@@ -35,4 +39,12 @@
 }
 .item-content-meta span>i {
     margin-right: 4px;
+}
+.topic-detail-head>h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.topic-detail-head>p>span {
+    margin-right: 15px
 }

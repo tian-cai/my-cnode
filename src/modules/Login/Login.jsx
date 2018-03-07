@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"
 import { Input, Button, Form, message } from 'antd'
 import service from "./../service.js"
 const FormItem = Form.Item;
@@ -15,13 +16,22 @@ class Login extends React.Component {
 
   //验证Access Token是否正确
   login() {
-    let url = service.nodeUrl + "/api/v1/accesstoken"
+    let url = service.LOGIN
+    let {history,location} = this.props
     let that = this
-    service.commonPost(url, {
+    axios.post(url, {
       accesstoken: that.state.token
-    }, function(response) {
-      localStorage.setItem('user', that.state.token)
-    }, function(error) {
+    }).then((response) => {
+      localStorage.setItem('userToken', that.state.token)
+      localStorage.setItem('userInfo', JSON.stringify(response.data))
+      if (location.state) {
+        history.push(location.state.preUrl)
+      } else {
+        message.success('登录成功')
+      }
+      
+    })
+    .catch((error) => {
       message.error(error.response.data.error_msg)
     })
   }
@@ -33,7 +43,6 @@ class Login extends React.Component {
   }
 
   render() {
-    
     return (
       <Form layout="inline">
         <FormItem required={true} label={"Access Token"}>

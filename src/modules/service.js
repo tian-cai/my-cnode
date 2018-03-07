@@ -1,30 +1,20 @@
-import axios from "axios"
-let nodeUrl = " https://cnodejs.org";
-let nodeService = {
-    nodeUrl,
-    commonGet,
-    commonPost
+let nodeUrl = " https://cnodejs.org/api/v1";
+let API = {
+    GET_TOPICS: nodeUrl + "/topics",
+    GET_TOPIC_DETAIL: nodeUrl + "/topic/{topicId}",
+    POST_TOPIC: nodeUrl + "/topics",
+    EDIT_TOPIC: nodeUrl + "/topics/update",
+    COLLECT_TOPIC: nodeUrl+ "/topic_collect/collect",
+    DE_COLLECT_TOPIC: nodeUrl+ "/topic_collect/de_collect",
+    NEW_REPLY: nodeUrl + "/topic/{topicId}/replies",
+    GOOD_REPLY: nodeUrl + "/reply/{replyId}/ups",
+    USER_COLLECT_TOPIC: nodeUrl + "/topic_collect/{loginname}",
+    USER_DETAIL: nodeUrl + "/user/{loginname}",
+    USER_MESSAGE_ALL: nodeUrl + "/messages",
+    USER_MESSAGE_UNREAD: nodeUrl + "/message/count",
+    MARK_MESSAGE: nodeUrl + "/message/mark_one/{msgId}",
+    MARK_MESSAGE_ALL: nodeUrl + "/message/mark_all",
+    LOGIN: nodeUrl + "/accesstoken"
 }
 
-//通用get方法
-function commonGet(url, params, callback,errorCallback) {
-    axios.get(url,{params})
-    .then((response) => {
-        callback(response)
-    })
-    .catch((error) => {
-        errorCallback && errorCallback(error)
-    })
-}
-//通过post方法
-function commonPost(url, params, callback,errorCallback) {
-    axios.post(url, params)
-    .then((response) => {
-        callback(response)
-    })
-    .catch((error) => {
-        errorCallback && errorCallback(error)
-    })
-}
-
-export default nodeService;
+export default API;

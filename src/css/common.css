@@ -24,6 +24,12 @@
 .mr10 {
   margin-right: 10px;
 }
+.ml10 {
+  margin-left: 10px;
+}
+.ml20 {
+  margin-left: 10px;
+}
 .block-title {
   padding: 12px 10px;
   background-color: #d9d9d9;
