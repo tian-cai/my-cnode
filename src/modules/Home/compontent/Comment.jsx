@@ -16,6 +16,8 @@ class Comment extends React.Component {
     }
     this.goodReply = this.goodReply.bind(this)
   }
+
+  //点赞
   goodReply() {
     let isLogin = util.isLogin();
     if (!isLogin) {
@@ -25,7 +27,7 @@ class Comment extends React.Component {
     let url = service.GOOD_REPLY.replace('{replyId}',this.props.comment.id)
     let that = this
     axios.post(url,{
-      accesstoken: localStorage.getItem('user')
+      accesstoken: localStorage.getItem('userToken')
     }).then((response) => {
       if (response.data.action == "down") {
         that.setState({
@@ -39,7 +41,7 @@ class Comment extends React.Component {
       message.success('操作成功')
     })
     .catch((error) => {
-      message.error(error)
+      message.error(error.response.data.error_msg)
     })
   }
 
@@ -61,7 +63,7 @@ class Comment extends React.Component {
           </div>
           <div className="item-content-meta">
             <span onClick={this.goodReply}><i className="iconfont icon-dianzan" title={`点赞数:${this.state.upsLength}`}></i>{this.state.upsLength}</span>
-            <span><i className="iconfont icon-huifu" title={`回复`}></i>回复</span>
+            <span><i className="iconfont icon-huifu" title={`回复`} onClick={this.addReply}></i>回复</span>
             <span><i className="iconfont icon-shijian" title={`创建时间:${comment.create_at}`}></i>{comment.create_at}</span>
           </div>
         </div>

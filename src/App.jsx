@@ -11,6 +11,7 @@ import UserDetail from "./modules/User/UserDetail.jsx"
 import Login from "./modules/Login/Login.jsx"
 import Message from "./modules/User/Message.jsx"
 import Collect from "./modules/User/Collect.jsx"
+import PublishTopic from "./modules/User/PublishTopic.jsx"
 import util from "./modules/util/util.js"
 import { Row, Col, Layout } from 'antd'
 const { Header, Footer } = Layout
@@ -63,6 +64,7 @@ class App extends React.Component {
                 <Route path="/login" component={Login} />  
                 <Route path="/user/message" component={Message} />     
                 <Route path="/user/collect" component={Collect} /> 
+                <Route path="/user/publish" component={PublishTopic} />  
                 <Route path="/user/:username" component={UserDetail} />   
               </Switch>    
             </div>

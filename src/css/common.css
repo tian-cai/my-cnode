@@ -37,3 +37,7 @@
 .bread-split {
   margin: 0 5px;
 }
+.rich-text {
+  border: 1px solid #ccc;
+  background: #fff;
+}

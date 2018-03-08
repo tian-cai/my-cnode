@@ -3,6 +3,7 @@ import axios from "axios"
 import service from "./../../service.js"
 import util from "./../../util/util.js"
 import CommentList from "./CommentList.jsx"
+import RichText from "./../../Common/RichText.jsx"
 import { message,Button } from 'antd'
 import "./topic.css"
 
@@ -15,6 +16,7 @@ class TopicDetail extends React.Component {
     }
     this.getTopicDetail = this.getTopicDetail.bind(this)
     this.collectTopic = this.collectTopic.bind(this)
+    this.publishRichText = this.publishRichText.bind(this)
   }
 
   //获取指定主题详情
@@ -49,7 +51,7 @@ class TopicDetail extends React.Component {
     let that = this
     axios.post(url,{
       topic_id: that.state.topicId,
-      accesstoken: localStorage.getItem('user')
+      accesstoken: localStorage.getItem('userToken')
     }).then((response) => {
       message.success('操作成功')
     })
@@ -57,10 +59,36 @@ class TopicDetail extends React.Component {
       message.error(error)
     })
   }
+  publishRichText(html) {
+    let isLogin = util.isLogin();
+    if (!isLogin) {
+      alert('请登录再进行操作');
+      return false
+    }
+    let url = service.NEW_REPLY.replace('{topicId}',this.state.topicId)
+    axios.post(url,{
+      accesstoken: localStorage.getItem('userToken'),
+      content:html
+    }).then((response) => {
+      message.success('操作成功')
+      this.getTopicDetail({
+        mdrender: "true",
+        accesstoken: localStorage.getItem('user')
+      });
+    })
+    .catch((error) => {
+      message.error(error.response.data.error_msg)
+    })
+
+  }
+
 
   render() {
     let topicInfo = this.state.topicInfo
     let isCollect = this.state.topicInfo.is_collect
+    let richTextSet = {
+      height: 260
+    }
     return (
     <div>
       <h3 className="block-title mt20">信息区</h3>
@@ -76,8 +104,10 @@ class TopicDetail extends React.Component {
       </div>}
       <h3 className="block-title mt20">内容区</h3>
       <div dangerouslySetInnerHTML={{__html: topicInfo.content}}></div>
-      <h3 className="block-title mt20">评论区：共{topicInfo.reply_count}条回复</h3>
+      <h3 className="block-title mt20">回复区：共{topicInfo.reply_count}条回复</h3>
       <CommentList commentList={topicInfo.replies}/>
+      <h3 className="block-title mt20">添加回复</h3>
+      <RichText richTextSet={richTextSet} publishRichText={this.publishRichText}/>
     </div> 
     );
   }
