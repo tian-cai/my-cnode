@@ -5,6 +5,7 @@ import util from "./../util/util.js"
 import CommentList from "./CommentList.jsx"
 import RichText from "./../Common/RichText.jsx"
 import { message,Button } from 'antd'
+import { Link } from "react-router-dom"
 import "./topic.css"
 
 class TopicDetail extends React.Component {
@@ -36,7 +37,7 @@ class TopicDetail extends React.Component {
   componentWillMount() {
     this.getTopicDetail({
         mdrender: "true",
-        accesstoken: localStorage.getItem('user')
+        accesstoken: localStorage.getItem('userToken')
     });
   }
   //收藏与取消收藏话题
@@ -73,7 +74,7 @@ class TopicDetail extends React.Component {
       message.success('操作成功')
       this.getTopicDetail({
         mdrender: "true",
-        accesstoken: localStorage.getItem('user')
+        accesstoken: localStorage.getItem('userToken')
       });
     })
     .catch((error) => {
@@ -91,21 +92,21 @@ class TopicDetail extends React.Component {
     }
     return (
     <div>
-      <h3 className="block-title mt20">信息区</h3>
+      <h3 className="block-title mt20"><Link to={"/"}>首页</Link><span className="bread-split">/</span>信息区</h3>
       {topicInfo.title && <div className="topic-detail-head">
         <h2>{topicInfo.title}</h2>
         <Button type="primary" style={{"position":"absolute","right":"10px","top":"10px"}} onClick={this.collectTopic}>{isCollect ? '取消收藏' : '收藏'}</Button>
         <p>
-          <span>作者:{topicInfo.author.loginname}</span>
-          <span>创建时间:{util.formatTime(topicInfo.create_at)}</span>
-          <span>阅读数:{topicInfo.visit_count}</span>
-          <span>最近回复时间:{util.formatTime(topicInfo.last_reply_at)}</span>
+          <span>作者 : {topicInfo.author.loginname}</span>
+          <span>创建时间 : {util.formatTime(topicInfo.create_at)}</span>
+          <span>阅读数 : {topicInfo.visit_count}</span>
+          <span>最近回复时间 : {util.formatTime(topicInfo.last_reply_at)}</span>
         </p>
       </div>}
       <h3 className="block-title mt20">内容区</h3>
       <div dangerouslySetInnerHTML={{__html: topicInfo.content}} className="md"></div>
       <h3 className="block-title mt20">回复区：共{topicInfo.reply_count}条回复</h3>
-      <CommentList commentList={topicInfo.replies}/>
+      {topicInfo.reply_count>0 ? <CommentList commentList={topicInfo.replies}/> : <div className="item" style={{"lineHeight": "34px"}}>暂无回复</div>}
       <h3 className="block-title mt20">添加回复</h3>
       <RichText richTextSet={richTextSet} publishRichText={this.publishRichText}/>
     </div> 

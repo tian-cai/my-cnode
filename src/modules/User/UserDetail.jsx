@@ -14,7 +14,8 @@ class UserDetail extends React.Component {
         recentReplyTopic: [],
         recentNewTopic: [],
         score: "",
-        createTime: ""
+        createTime: "",
+        ava: ""
     }
     this.getUserDetail = this.getUserDetail.bind(this);
   }
@@ -32,7 +33,8 @@ class UserDetail extends React.Component {
             recentReplyTopic: response.data.data.recent_replies,
             recentNewTopic: response.data.data.recent_topics,
             score: response.data.data.score,
-            createTime: response.data.data.create_at
+            createTime: response.data.data.create_at,
+            ava: response.data.data.avatar_url
         })
       })
       .catch((error) => {
@@ -45,9 +47,9 @@ class UserDetail extends React.Component {
     let recentReplyTopic = this.state.recentReplyTopic;
     let recentNewTopic = this.state.recentNewTopic;
     let score = this.state.score;
-    let createTime = this.state.createTime;
-    let ava = util.getUserAva();
-    let loginName = util.getLoginName();
+    let createTime = util.formatTime(this.state.createTime);
+    let ava = this.state.ava;
+    let loginName = this.state.username;
     return (
         <div>
             <h3 className="block-title mt20"><Link to={"/"}>首页</Link><span className="bread-split">/</span>个人信息</h3>
@@ -56,23 +58,22 @@ class UserDetail extends React.Component {
                 <img src={ava}/>
               </a>
               <div className="item-content">
-                <span>积分:{score}</span>
-                <span>注册时间:{createTime}</span>
-                <Link to={"/user/publish"}>发布话题</Link>
+                <span className="mr20">积分 : {score}</span>
+                <span className="mr20">注册时间 : {createTime}</span>
               </div>
             </div>
             <h3 className="block-title mt20">最近参与话题</h3>
-            <ul>
-            {recentReplyTopic.length>0 && recentReplyTopic.map((ele,index) => {
-              return <UserTopic topic={ele} key={index}/>  
-            })}
-            </ul>
+            {recentReplyTopic.length>0 ? <ul>
+              {recentReplyTopic.map((ele,index) => {
+                return <UserTopic topic={ele} key={index}/>  
+              })}
+            </ul> : <div className="item" style={{"lineHeight": "34px"}}>暂无</div>} 
             <h3 className="block-title mt20">最近创建话题</h3>
-            <ul>
-            {recentNewTopic.length>0 && recentNewTopic.map((ele,index) => {
-              return <UserTopic topic={ele} key={index}/>  
-            })}
-            </ul>
+            {recentNewTopic.length>0 ? <ul>
+              {recentNewTopic.map((ele,index) => {
+                return <UserTopic topic={ele} key={index}/>  
+              })}
+            </ul> : <div className="item" style={{"lineHeight": "34px"}}>暂无</div>} 
         </div>
     )
   }

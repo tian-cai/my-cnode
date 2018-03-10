@@ -18,6 +18,17 @@ class PublishTopic extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.getTitle = this.getTitle.bind(this)
   }
+
+  componentWillMount() {
+    let isLogin = util.isLogin()
+    let {history,match} = this.props
+    if (!isLogin) {
+      setTimeout(()=> {
+        history.push("/login",{preUrl:match.path})
+      },2000)
+      return false
+    }
+  }
   publishRichText(html) {
     let url = service.POST_TOPIC
     axios.post(url,{
@@ -53,16 +64,15 @@ class PublishTopic extends React.Component {
     return (
       <div>
         <h3 className="block-title mt20"><Link to={"/"}>首页</Link><span className="bread-split">/</span>发布话题</h3>
-        <Select placeholder="请选择一个版块" style={{ width: 200 }} onChange={this.handleChange}>
+        <Select placeholder="请选择一个版块" style={{ width: 200,"marginTop":"20px" }} onChange={this.handleChange}>
           <Option value="share">分享</Option>
           <Option value="job">招聘</Option>
           <Option value="ask">问答</Option>
           <Option value="dev">测试</Option>
         </Select>
-        <Input placeholder="请输入标题"  onBlur={this.getTitle}/>
+        <Input placeholder="请输入标题"  onBlur={this.getTitle} style={{"margin":"20px 0px"}}/>
         <RichText richTextSet={richTextSet} publishRichText={this.publishRichText}/>
-      </div>
-      
+      </div>   
     )
   }
 }

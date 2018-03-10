@@ -11,6 +11,12 @@ body {
     line-height: 64px;
     background: #464646;
 }
+.layout .head a {
+    color: #ccc;
+}
+.layout .head a:hover {
+    color: #eee;
+}
 .layout .cnode-logo {
     display: inline-block;
     width: 220px;
@@ -24,6 +30,17 @@ body {
 .layout .foot {
     height: 100px;
     line-height: 100px;
-    background-color: #000;
+    background-color: #464646;
     color: rgba(255, 255, 255, 0.65);
+}
+
+.ant-badge-count {
+    box-shadow: none;
+    left: -8px;
+}
+.current-tab {
+    background-color: #80bd01;
+    color: #fff;
+    padding: 3px 4px;
+    border-radius: 3px;
 }

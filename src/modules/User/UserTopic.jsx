@@ -1,6 +1,7 @@
 import React from "react";
 import "./../Home/topic.css"
 import { Link } from "react-router-dom";
+import util from "./../util/util.js"
 
 class UserTopic extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class UserTopic extends React.Component {
         <div className="item-content">
           <div className="item-content-title">
             <Link to={`/topic/${topic.id}`}>{topic.title}</Link>
-            <span className="comment-floor">{topic.last_reply_at}</span>
+            <span className="comment-floor">{util.formatTime(topic.last_reply_at)}</span>
           </div>
         </div>
       </li>

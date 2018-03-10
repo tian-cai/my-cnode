@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios"
 import { Input, Button, Form, message } from 'antd'
+import { Link } from "react-router-dom"
 import service from "./../service.js"
 const FormItem = Form.Item;
 
@@ -44,14 +45,17 @@ class Login extends React.Component {
 
   render() {
     return (
-      <Form layout="inline">
-        <FormItem required={true} label={"Access Token"}>
-          <Input placeholder="请输入你的Access Token" onChange={this.getToken} value={this.state.token}/>
-        </FormItem>
-        <FormItem>
-          <Button type="primary" onClick={this.login}>登录</Button>
-        </FormItem>
-      </Form>
+      <div>
+        <h3 className="block-title mt20"><Link to={"/"}>首页</Link><span className="bread-split">/</span>登录</h3>
+        <Form layout="inline">
+          <FormItem required={true} label={"Access Token"}>
+            <Input placeholder="请输入你的Access Token" onChange={this.getToken} value={this.state.token}/>
+          </FormItem>
+          <FormItem>
+            <Button type="primary" onClick={this.login}>登录</Button>
+          </FormItem>
+        </Form>
+      </div>
     )
   }
 }

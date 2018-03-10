@@ -46,9 +46,9 @@ class Collect extends React.Component {
     return (
       <div>
         <h3 className="block-title mt20"><Link to={"/"}>首页</Link><span className="bread-split">/</span>我的收藏</h3>
-        {collectList && collectList.map((ele,index) => {
+        {collectList.length ? collectList.map((ele,index) => {
           return <UserTopic topic={ele} key={index} />
-        })}
+        }) : <div className="item" style={{"lineHeight": "34px"}}>暂无</div>}
       </div>
     )
   }
