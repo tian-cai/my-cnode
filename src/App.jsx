@@ -5,13 +5,14 @@ import "./css/common.css"
 import "./css/app.css" 
 import "./css/iconfont.css" 
 import cnode from "./assets/cnodejs.svg"
-import TopicList from "./modules/Home/compontent/TopicList.jsx"
-import TopicDetail from "./modules/Home/compontent/TopicDetail.jsx"
+import TopicList from "./modules/Home/TopicList.jsx"
+import TopicDetail from "./modules/Home/TopicDetail.jsx"
 import UserDetail from "./modules/User/UserDetail.jsx"
 import Login from "./modules/Login/Login.jsx"
 import Message from "./modules/User/Message.jsx"
 import Collect from "./modules/User/Collect.jsx"
 import PublishTopic from "./modules/User/PublishTopic.jsx"
+import BackUp from "./modules/Common/BackUp.jsx"
 import util from "./modules/util/util.js"
 import { Row, Col, Layout } from 'antd'
 const { Header, Footer } = Layout
@@ -68,9 +69,12 @@ class App extends React.Component {
                 <Route path="/user/:username" component={UserDetail} />   
               </Switch>    
             </div>
-            <div className="foot"></div>
+            <div className="mt20 foot text-center">
+              react + react-router4 + es6 +webpack实现的my-cnode。
+            </div>
           </Col>
         </Row>
+        <BackUp />
       </Layout>
     );
   }

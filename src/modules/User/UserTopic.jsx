@@ -1,5 +1,5 @@
 import React from "react";
-import "./../Home/compontent/topic.css"
+import "./../Home/topic.css"
 import { Link } from "react-router-dom";
 
 class UserTopic extends React.Component {

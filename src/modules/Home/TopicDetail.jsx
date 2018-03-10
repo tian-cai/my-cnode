@@ -1,9 +1,9 @@
 import React from "react";
 import axios from "axios"
-import service from "./../../service.js"
-import util from "./../../util/util.js"
+import service from "./../service.js"
+import util from "./../util/util.js"
 import CommentList from "./CommentList.jsx"
-import RichText from "./../../Common/RichText.jsx"
+import RichText from "./../Common/RichText.jsx"
 import { message,Button } from 'antd'
 import "./topic.css"
 
@@ -97,13 +97,13 @@ class TopicDetail extends React.Component {
         <Button type="primary" style={{"position":"absolute","right":"10px","top":"10px"}} onClick={this.collectTopic}>{isCollect ? '取消收藏' : '收藏'}</Button>
         <p>
           <span>作者:{topicInfo.author.loginname}</span>
-          <span>创建时间:{topicInfo.create_at}</span>
+          <span>创建时间:{util.formatTime(topicInfo.create_at)}</span>
           <span>阅读数:{topicInfo.visit_count}</span>
-          <span>最近回复时间:{topicInfo.last_reply_at}</span>
+          <span>最近回复时间:{util.formatTime(topicInfo.last_reply_at)}</span>
         </p>
       </div>}
       <h3 className="block-title mt20">内容区</h3>
-      <div dangerouslySetInnerHTML={{__html: topicInfo.content}}></div>
+      <div dangerouslySetInnerHTML={{__html: topicInfo.content}} className="md"></div>
       <h3 className="block-title mt20">回复区：共{topicInfo.reply_count}条回复</h3>
       <CommentList commentList={topicInfo.replies}/>
       <h3 className="block-title mt20">添加回复</h3>

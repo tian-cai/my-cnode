@@ -18,6 +18,13 @@
 .mt10 {
   margin-top: 10px;
 }
+.mb20 {
+  margin-bottom: 20px;
+}
+.mb10 {
+  margin-bottom: 10px;
+}
+
 .mr20 {
   margin-right: 20px;
 }
@@ -30,6 +37,8 @@
 .ml20 {
   margin-left: 10px;
 }
+
+
 .block-title {
   padding: 12px 10px;
   background-color: #d9d9d9;
@@ -40,4 +49,31 @@
 .rich-text {
   border: 1px solid #ccc;
   background: #fff;
+}
+
+/* 回到顶部 */
+.ant-back-top {
+  bottom: 100px;
+}
+
+.ant-back-top-inner {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 4px;
+  background-color: #1088e9;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* 关于居中 */
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
 }

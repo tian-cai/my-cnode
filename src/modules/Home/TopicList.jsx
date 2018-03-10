@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios"
-import service from "./../../service.js"
+import service from "./../service.js"
+import constant from "./../util/constant.js"
 import { message, Pagination  } from 'antd'
 import Topic from "./Topic.jsx"
 
@@ -42,7 +43,7 @@ class TopicList extends React.Component {
   changeTab(tab) {
     this.getTopicList({
         page: 1,
-        limit: 10,
+        limit: 20,
         tab: tab,
         mdrender: "false"
     });
@@ -51,7 +52,7 @@ class TopicList extends React.Component {
   componentWillMount() {
     this.getTopicList({
         page: 1,
-        limit: 10,
+        limit: 20,
         tab: "all",
         mdrender: "false"
     });
@@ -59,13 +60,7 @@ class TopicList extends React.Component {
 
   render() {
     let topicList = this.state.topicList;
-    let tab = [
-        {name:"全部", value:"all"},
-        {name:"分享", value:"share"},
-        {name:"问答", value:"ask"},
-        {name:"招聘", value:"job"},
-        {name:"测试", value:"dev"}
-    ]
+    let tab = constant.tab
     return (
       <div>
         <nav className="block-title">
@@ -73,12 +68,12 @@ class TopicList extends React.Component {
             return <a className="mr20" key={index} onClick={this.changeTab.bind(this,ele.value)}>{ele.name}</a>
           })}
         </nav>
-        <ul>
+        <ul className="mb20">
           {topicList.map((ele,index) => {
             return <Topic key={index} topic={ele} />
           })}
         </ul>
-        <Pagination onChange={this.changePage} total={500}/>
+        <Pagination onChange={this.changePage} total={500} pageSize={20}/>
       </div>
     );
   }

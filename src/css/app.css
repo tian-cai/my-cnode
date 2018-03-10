@@ -1,5 +1,6 @@
 body {
     background: #f0f2f5;
+    overflow-x: hidden;
 }
 .layout {
 
@@ -19,4 +20,10 @@ body {
 }
 .layout .main {
     margin-top: 20px;
+}
+.layout .foot {
+    height: 100px;
+    line-height: 100px;
+    background-color: #000;
+    color: rgba(255, 255, 255, 0.65);
 }

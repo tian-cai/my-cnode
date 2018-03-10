@@ -1,0 +1,118 @@
+.item, .topic-detail-head {
+    position: relative;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background: #fff;
+    list-style: none;
+}
+.item:first-child {
+    border-top: none;
+}
+
+.item>a>img, .ava{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #9E9E9E;
+}
+.ava {
+    vertical-align: middle;
+}
+.item>.item-content {
+    margin-left: 50px;
+}
+.item-content-title .comment-floor {
+    position: absolute;
+    right: 10px;
+    font-size: 14px;
+    color: #2a00ff;
+}
+.item-content-body {
+    margin-top: 10px;
+}
+.item-content-meta {
+    margin-top: 10px;
+}
+.item-content-meta span {
+    font-size: 14px;
+    margin-right: 10px;
+}
+.item-content-meta span>i {
+    margin-right: 4px;
+}
+.topic-detail-head>h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.topic-detail-head>p>span {
+    margin-right: 15px
+}
+
+/* 话题详情页 */
+.md {
+    background: #fff;
+    padding: 10px;
+    padding-left: 20px;
+}
+.md h1,.md h2,.md h3 {
+    border-bottom: 1px solid #eee;
+    line-height: 40px;
+}
+.md h1{
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0.67em 0em;
+}
+.md h2{
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0.83em 0em;
+}
+.md h3{
+    font-size: 1.17em;
+    font-weight: 700;
+    margin: 1em 0em;
+}
+.md h4{
+    font-size: 1.0em;
+    font-weight: 700;
+    margin: 1.33em 0em;
+}
+.md h5{
+    font-size: 0.83em;
+    font-weight: 700;
+    margin: 1.33em 0em;
+}
+.md h6{
+    font-size: 0.67em;
+    font-weight: 700;
+}
+.md p {
+    margin: 1em 0em;
+    font-size: 15px;
+    line-height: 1.7em;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.md blockquote {
+    padding: 0 0 0 15px;
+    margin: 0 0 20px;
+    border-left: 5px solid #eee;
+}
+.md img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+}
+.md ul,.md ol {
+    margin: 1em 0em;
+    padding-left: 40px;
+}
+.md ul li,.md ol li  {
+    display: list-item;
+    list-style: disc;
+    line-height: 2em;
+}

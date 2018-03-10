@@ -3,8 +3,8 @@ import axios from "axios"
 import "./topic.css"
 import { Link } from "react-router-dom";
 import { message } from 'antd'
-import service from "./../../service.js"
-import util from "./../../util/util.js"
+import service from "./../service.js"
+import util from "./../util/util.js"
 
 
 class Comment extends React.Component {
@@ -64,7 +64,7 @@ class Comment extends React.Component {
           <div className="item-content-meta">
             <span onClick={this.goodReply}><i className="iconfont icon-dianzan" title={`点赞数:${this.state.upsLength}`}></i>{this.state.upsLength}</span>
             <span><i className="iconfont icon-huifu" title={`回复`} onClick={this.addReply}></i>回复</span>
-            <span><i className="iconfont icon-shijian" title={`创建时间:${comment.create_at}`}></i>{comment.create_at}</span>
+            <span><i className="iconfont icon-shijian" title={`创建时间:${util.formatTime(comment.create_at)}`}></i>{util.formatTime(comment.create_at)}</span>
           </div>
         </div>
       </li>
