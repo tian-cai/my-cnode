@@ -13,6 +13,7 @@ class RichText extends React.Component {
   addReply() {
     let html = this.editorInstance.getContent("html")
     this.props.publishRichText(html)
+    this.editorInstance.setContent("","html")
   }
 
   render () {

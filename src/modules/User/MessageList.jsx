@@ -15,6 +15,7 @@ class MessageList extends React.Component {
     }
     this.getMessage = this.getMessage.bind(this);
     this.markAll = this.markAll.bind(this);
+    this.markMsg = this.markMsg.bind(this);
    
   }
   componentWillMount() {
@@ -54,6 +55,20 @@ class MessageList extends React.Component {
     axios.post(url,{
       accesstoken: localStorage.getItem('userToken')
     }).then((response) => {
+      message.success('操作成功')
+      that.getMessage()
+    })
+    .catch((error) => {
+      message.error(error)
+    })
+  }
+  markMsg(msgId) {
+    let url = service.MARK_MESSAGE.replace('{msgId}',msgId);
+    let that = this;
+    axios.post(url,{
+      accesstoken: localStorage.getItem('userToken')
+    }).then((response) => {
+      message.success('操作成功')
       that.getMessage()
     })
     .catch((error) => {
@@ -72,8 +87,8 @@ class MessageList extends React.Component {
           <Link to={"/"}>首页</Link><span className="bread-split">/</span>未读消息
         </h3>
         {notReadMsg.length ? (<ul>
-          {hasReadMeg.map((ele,index) => {
-            return <Message message={ele} key={index}/>
+          {notReadMsg.map((ele,index) => {
+            return <Message message={ele} key={ele.id} mark={this.markMsg}/>
           })}
           </ul>) : (<div className="item" style={{"lineHeight": "34px"}}>暂无消息</div>)}
 

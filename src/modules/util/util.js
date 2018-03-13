@@ -3,7 +3,8 @@ let util = {
     getLoginName,
     getUserAva,
     logout,
-    formatTime
+    formatTime,
+    curTab
 }
 //是否处于登录状态
 function isLogin() {
@@ -49,5 +50,25 @@ function formatTime(timeStr) {
 //不足两位数的，前面补0
 function formatCtrl(str) {
     return str < 10 ? '0' + str : str
+}
+
+//切换tab时，给当前tab添加class
+function curTab(ele) {
+    ele.classList.add("current-tab");
+    nextEle(ele);
+    preEle(ele);
+}
+
+function nextEle(ele) {
+    while (ele.nextElementSibling) {
+        ele.nextElementSibling.classList.remove("current-tab");
+        ele = ele.nextElementSibling;
+    }
+}
+function preEle(ele) {
+    while (ele.previousElementSibling) {
+        ele.previousElementSibling.classList.remove("current-tab")
+        ele = ele.previousElementSibling;
+    }
 }
 export default util;

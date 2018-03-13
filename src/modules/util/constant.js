@@ -17,11 +17,16 @@ let tabName = {
     job: "招聘",
     dev: "测试"
 }
+let messageType = {
+    reply: "回复",
+    at: "@"
+}
 
 let constant = {
     tab,
     tabColor,
-    tabName
+    tabName,
+    messageType
 }
 
 export default constant

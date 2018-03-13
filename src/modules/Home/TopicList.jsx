@@ -2,6 +2,7 @@ import React from "react"
 import axios from "axios"
 import service from "./../service.js"
 import constant from "./../util/constant.js"
+import util from "./../util/util.js"
 import { message, Pagination  } from 'antd'
 import Topic from "./Topic.jsx"
 
@@ -9,7 +10,9 @@ class TopicList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        topicList: []
+        topicList: [],
+        curPage:1,
+        tab:"all"
     }
     this.getTopicList = this.getTopicList.bind(this);
     this.changePage = this.changePage.bind(this);
@@ -32,15 +35,23 @@ class TopicList extends React.Component {
   }
   //改变页码
   changePage(page, pageSize) {
+    this.setState({
+      curPage:page
+    })
     this.getTopicList({
         page: page,
         limit: pageSize,
-        tab: "all",
+        tab: this.state.tab,
         mdrender: "false"
     });
   }
   //改变Tab
-  changeTab(tab) {
+  changeTab(tab,event) {
+    util.curTab(event.target)
+    this.setState({
+      curPage:1,
+      tab: tab
+    })
     this.getTopicList({
         page: 1,
         limit: 20,
@@ -53,7 +64,7 @@ class TopicList extends React.Component {
     this.getTopicList({
         page: 1,
         limit: 20,
-        tab: "all",
+        tab: this.state.tab,
         mdrender: "false"
     });
   }
@@ -73,7 +84,7 @@ class TopicList extends React.Component {
             return <Topic key={index} topic={ele} />
           })}
         </ul>
-        <Pagination onChange={this.changePage} total={500} pageSize={20}/>
+        <Pagination onChange={this.changePage} total={500} pageSize={20} current={this.state.curPage} />
       </div>
     );
   }

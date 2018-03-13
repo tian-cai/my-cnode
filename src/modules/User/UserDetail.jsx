@@ -23,9 +23,13 @@ class UserDetail extends React.Component {
   componentWillMount() {
     this.getUserDetail();
   }
+  componentWillReceiveProps(nextProps) {
+    this.props = nextProps
+    this.getUserDetail() 
+  }
   //获取用户详情
   getUserDetail() {
-    let url = service.USER_DETAIL.replace('{loginname}',this.state.username); 
+    let url = service.USER_DETAIL.replace('{loginname}',this.props.match.params.username); 
     let that = this;
     axios.get(url)
       .then((response) => {
