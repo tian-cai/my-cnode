@@ -1,46 +1,50 @@
 body {
-    background: #f0f2f5;
-    overflow-x: hidden;
+  background: #f0f2f5;
+  overflow-x: hidden;
 }
 .layout {
-
 }
 
 .layout .head {
-    height: 64px;
-    line-height: 64px;
-    background: #464646;
+  height: 64px;
+  line-height: 64px;
+  background: #464646;
 }
 .layout .head a {
-    color: #ccc;
+  color: #ccc;
 }
 .layout .head a:hover {
-    color: #eee;
+  color: #eee;
 }
 .layout .cnode-logo {
-    display: inline-block;
-    width: 220px;
-    padding-left: 15px;
-    padding-top: 4px;
-    height: 64px;
+  display: inline-block;
+  width: 220px;
+  padding-left: 15px;
+  padding-top: 4px;
+  height: 64px;
 }
 .layout .main {
-    margin-top: 20px;
+  position: initial;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  min-height: 600px;
 }
-.layout .foot {
-    height: 100px;
-    line-height: 100px;
-    background-color: #464646;
-    color: rgba(255, 255, 255, 0.65);
+.main .ant-spin-spinning {
+  opacity: 1;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ant-badge-count {
-    box-shadow: none;
-    left: -8px;
+  box-shadow: none;
+  left: -8px;
 }
 .current-tab {
-    background-color: #80bd01;
-    color: #fff;
-    padding: 3px 4px;
-    border-radius: 3px;
+  background-color: #80bd01;
+  color: #fff;
+  padding: 3px 4px;
+  border-radius: 3px;
 }
