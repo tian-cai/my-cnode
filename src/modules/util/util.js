@@ -1,8 +1,7 @@
-let util = {
+const util = {
   isLogin,
-  getLoginName,
-  getUserAva,
   logout,
+  getCurrentUserInfo,
   formatTime,
   curTab
 }
@@ -17,14 +16,9 @@ function isLogin() {
   }
 }
 
-// 获取用户名
-function getLoginName() {
-  return JSON.parse(localStorage.getItem("userInfo")).loginname
-}
-
-//获取用户头像
-function getUserAva() {
-  return JSON.parse(localStorage.getItem("userInfo")).avatar_url
+//获取用户信息
+function getCurrentUserInfo() {
+  return JSON.parse(localStorage.getItem("userInfo"))
 }
 
 //注销登录

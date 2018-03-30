@@ -43,8 +43,8 @@ class App extends React.Component {
     if (!isLogin) {
       return
     }
-    let url = service.USER_MESSAGE_UNREAD
-    let that = this
+    const url = service.USER_MESSAGE_UNREAD
+    const that = this
     axios
       .get(url, {
         params: {
@@ -65,11 +65,11 @@ class App extends React.Component {
   }
 
   render() {
-    let isLogin = util.isLogin()
-    let loginName, userAva
+    const isLogin = util.isLogin()
+    let userName, userAvatar
     if (isLogin) {
-      loginName = util.getLoginName()
-      userAva = util.getUserAva()
+      userName = util.getCurrentUserInfo().loginname
+      userAvatar = util.getCurrentUserInfo().avatar_url
     }
 
     return (
@@ -87,8 +87,8 @@ class App extends React.Component {
               )}
               {isLogin && (
                 <div className="float-right mr20">
-                  <Link to={`/user/${loginName}`} className="mr20">
-                    <img src={userAva} className="ava" />
+                  <Link to={`/user/${userName}`} className="mr20">
+                    <img src={userAvatar} className="ava" />
                   </Link>
                   <a href="javascript:;" onClick={this.logout}>
                     注销

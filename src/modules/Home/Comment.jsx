@@ -18,7 +18,7 @@ class Comment extends React.Component {
 
   //点赞
   goodReply() {
-    let isLogin = util.isLogin()
+    const isLogin = util.isLogin()
     if (!isLogin) {
       message.error("请登录再进行操作")
       return false
