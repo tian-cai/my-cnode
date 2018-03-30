@@ -2,9 +2,9 @@ import React from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { message, Spin } from "antd"
-import service from "./../service.js"
-import util from "./../util/util.js"
 import Message from "./Message.jsx"
+import service from "./../service/service.js"
+import util from "./../util/util.js"
 
 class MessageList extends React.Component {
   constructor(props) {
@@ -18,9 +18,11 @@ class MessageList extends React.Component {
     this.markAll = this.markAll.bind(this)
     this.markMsg = this.markMsg.bind(this)
   }
+
   componentWillMount() {
     this.getMessage()
   }
+
   // 获取已读和未读消息
   getMessage() {
     let isLogin = util.isLogin()
@@ -58,6 +60,7 @@ class MessageList extends React.Component {
         message.error(error)
       })
   }
+
   // 标记全部已读
   markAll() {
     let url = service.MARK_MESSAGE_ALL
@@ -73,6 +76,7 @@ class MessageList extends React.Component {
         message.error(error)
       })
   }
+
   markMsg(msgId) {
     let url = service.MARK_MESSAGE.replace("{msgId}", msgId)
     let that = this

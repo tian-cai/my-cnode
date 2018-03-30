@@ -1,10 +1,10 @@
 import React from "react"
 import axios from "axios"
-import service from "./../service.js"
-import constant from "./../util/constant.js"
-import util from "./../util/util.js"
 import { message, Pagination } from "antd"
 import Topic from "./Topic.jsx"
+import service from "./../service/service.js"
+import constant from "./../util/constant.js"
+import util from "./../util/util.js"
 
 class TopicList extends React.Component {
   constructor(props) {
@@ -34,6 +34,7 @@ class TopicList extends React.Component {
         message.error(error)
       })
   }
+
   //改变页码
   changePage(page, pageSize) {
     this.setState({
@@ -46,6 +47,7 @@ class TopicList extends React.Component {
       mdrender: "false"
     })
   }
+
   //改变Tab
   changeTab(tab, event) {
     util.curTab(event.target)

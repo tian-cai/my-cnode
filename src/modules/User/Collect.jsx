@@ -2,9 +2,9 @@ import React from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { message, Spin } from "antd"
-import service from "./../service.js"
-import util from "./../util/util.js"
 import UserTopic from "./../User/UserTopic.jsx"
+import service from "./../service/service.js"
+import util from "./../util/util.js"
 
 class Collect extends React.Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class Collect extends React.Component {
   componentWillMount() {
     this.getCollectTopic()
   }
+
   getCollectTopic() {
     let isLogin = util.isLogin()
     let { history, match } = this.props

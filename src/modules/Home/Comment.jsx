@@ -1,9 +1,9 @@
 import React from "react"
 import axios from "axios"
-import "./topic.css"
 import { Link } from "react-router-dom"
 import { message } from "antd"
-import service from "./../service.js"
+import "./topic.css"
+import service from "./../service/service.js"
 import util from "./../util/util.js"
 
 class Comment extends React.Component {

@@ -18,7 +18,7 @@ git clone https://github.com/tian-cai/my-cnode
 //安装
 npm install
 //本地运行
-nom run start
+npm run start
 //打包
 npm run build
 

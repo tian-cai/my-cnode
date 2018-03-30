@@ -1,12 +1,12 @@
 import React from "react"
 import axios from "axios"
-import service from "./../service.js"
-import util from "./../util/util.js"
-import CommentList from "./CommentList.jsx"
-import RichText from "./../Common/RichText.jsx"
 import { message, Button, Spin } from "antd"
 import { Link } from "react-router-dom"
 import "./topic.css"
+import CommentList from "./CommentList.jsx"
+import RichText from "./../Common/RichText.jsx"
+import service from "./../service/service.js"
+import util from "./../util/util.js"
 
 class TopicDetail extends React.Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios"
 import { Input, Button, Form, message } from "antd"
 import { Link } from "react-router-dom"
-import service from "./../service.js"
+import service from "./../service/service.js"
 const FormItem = Form.Item
 
 class Login extends React.Component {
@@ -37,6 +37,7 @@ class Login extends React.Component {
         message.error(error.response.data.error_msg)
       })
   }
+
   //获取Token值
   getToken(e) {
     this.setState({

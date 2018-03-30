@@ -1,10 +1,11 @@
 import React from "react"
 import axios from "axios"
 import { Input, message, Select } from "antd"
-import service from "./../service.js"
-import RichText from "./../Common/RichText.jsx"
-import util from "./../util/util.js"
 import { Link } from "react-router-dom"
+import RichText from "./../Common/RichText.jsx"
+import service from "./../service/service.js"
+import util from "./../util/util.js"
+
 const Option = Select.Option
 
 class PublishTopic extends React.Component {
@@ -30,6 +31,7 @@ class PublishTopic extends React.Component {
       return false
     }
   }
+
   publishRichText(html) {
     let url = service.POST_TOPIC
     let that = this

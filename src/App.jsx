@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { Route, Switch, Link } from "react-router-dom"
+import { Row, Col, Layout, message, Badge } from "antd"
 import "./css/reset.css"
 import "./css/common.css"
 import "./css/app.css"
@@ -14,9 +15,9 @@ import MessageList from "./modules/User/MessageList.jsx"
 import Collect from "./modules/User/Collect.jsx"
 import PublishTopic from "./modules/User/PublishTopic.jsx"
 import BackUp from "./modules/Common/BackUp.jsx"
+import service from "./modules/service/service.js"
 import util from "./modules/util/util.js"
-import service from "./modules/service.js"
-import { Row, Col, Layout, message, Badge } from "antd"
+
 const { Header, Footer } = Layout
 
 class App extends React.Component {

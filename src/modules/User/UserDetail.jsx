@@ -1,10 +1,10 @@
 import React from "react"
 import axios from "axios"
-import service from "./../service.js"
-import util from "./../util/util.js"
-import UserTopic from "./UserTopic.jsx"
 import { message, Spin } from "antd"
 import { Link } from "react-router-dom"
+import UserTopic from "./UserTopic.jsx"
+import service from "./../service/service.js"
+import util from "./../util/util.js"
 
 class UserDetail extends React.Component {
   constructor(props) {
@@ -24,10 +24,12 @@ class UserDetail extends React.Component {
   componentWillMount() {
     this.getUserDetail()
   }
+
   componentWillReceiveProps(nextProps) {
     this.props = nextProps
     this.getUserDetail()
   }
+
   //获取用户详情
   getUserDetail() {
     let url = service.USER_DETAIL.replace(
