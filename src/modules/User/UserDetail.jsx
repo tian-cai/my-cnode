@@ -32,11 +32,11 @@ class UserDetail extends React.Component {
 
   //获取用户详情
   getUserDetail() {
-    let url = service.USER_DETAIL.replace(
+    const url = service.USER_DETAIL.replace(
       "{loginname}",
       this.props.match.params.username
     )
-    let that = this
+    const that = this
     that.setState({
       loading: true
     })

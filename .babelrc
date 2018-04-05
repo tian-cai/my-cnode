@@ -1,6 +1,16 @@
 {
-    "presets": ["es2015","react", "stage-3"],
-    "plugins": [
-        ["import", { "libraryName": "antd",  "style": "css" }] // `style: true` 会加载 less 文件
+  "presets": ["es2015", "react", "stage-3"],
+  "plugins": [
+    ["import", { "libraryName": "antd", "style": "css" }], // `style: true` 会加载 less 文件
+    ["syntax-dynamic-import"],
+    [
+      "transform-runtime",
+      {
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
+      }
     ]
+  ]
 }

@@ -2,7 +2,6 @@ import React from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 import { message } from "antd"
-import "./topic.css"
 import service from "./../service/service.js"
 import util from "./../util/util.js"
 
@@ -23,8 +22,8 @@ class Comment extends React.Component {
       message.error("请登录再进行操作")
       return false
     }
-    let url = service.GOOD_REPLY.replace("{replyId}", this.props.comment.id)
-    let that = this
+    const url = service.GOOD_REPLY.replace("{replyId}", this.props.comment.id)
+    const that = this
     axios
       .post(url, {
         accesstoken: localStorage.getItem("userToken")

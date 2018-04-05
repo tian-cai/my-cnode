@@ -3,6 +3,7 @@ import axios from "axios"
 import { Input, Button, Form, message } from "antd"
 import { Link } from "react-router-dom"
 import service from "./../service/service.js"
+
 const FormItem = Form.Item
 
 class Login extends React.Component {
@@ -17,9 +18,9 @@ class Login extends React.Component {
 
   //验证Access Token是否正确
   login() {
-    let url = service.LOGIN
+    const url = service.LOGIN
     let { history, location } = this.props
-    let that = this
+    const that = this
     axios
       .post(url, {
         accesstoken: that.state.token

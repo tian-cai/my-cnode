@@ -26,8 +26,11 @@ class TopicDetail extends React.Component {
     this.setState({
       loading: true
     })
-    let url = service.GET_TOPIC_DETAIL.replace("{topicId}", this.state.topicId)
-    let that = this
+    const url = service.GET_TOPIC_DETAIL.replace(
+      "{topicId}",
+      this.state.topicId
+    )
+    const that = this
     axios
       .get(url, { params })
       .then(response => {
@@ -43,15 +46,17 @@ class TopicDetail extends React.Component {
         message.error(error)
       })
   }
+
   componentWillMount() {
     this.getTopicDetail({
       mdrender: "true",
       accesstoken: localStorage.getItem("userToken")
     })
   }
+
   //收藏与取消收藏话题
   collectTopic() {
-    let isLogin = util.isLogin()
+    const isLogin = util.isLogin()
     if (!isLogin) {
       message.error("请登录再进行操作")
       return false
@@ -59,8 +64,8 @@ class TopicDetail extends React.Component {
     let isCollect = this.state.topicInfo.is_collect
       ? "DE_COLLECT_TOPIC"
       : "COLLECT_TOPIC"
-    let url = service[isCollect]
-    let that = this
+    const url = service[isCollect]
+    const that = this
     axios
       .post(url, {
         topic_id: that.state.topicId,
@@ -76,13 +81,14 @@ class TopicDetail extends React.Component {
         message.error(error)
       })
   }
+
   publishRichText(html) {
-    let isLogin = util.isLogin()
+    const isLogin = util.isLogin()
     if (!isLogin) {
       message.error("请登录再进行操作")
       return false
     }
-    let url = service.NEW_REPLY.replace("{topicId}", this.state.topicId)
+    const url = service.NEW_REPLY.replace("{topicId}", this.state.topicId)
     axios
       .post(url, {
         accesstoken: localStorage.getItem("userToken"),
@@ -95,7 +101,9 @@ class TopicDetail extends React.Component {
         })
       })
       .catch(error => {
-        message.error(error.response.data.error_msg)
+        message.error(
+          (error.response && error.response.data.error_msg) || "服务端出错"
+        )
       })
   }
 
@@ -103,7 +111,7 @@ class TopicDetail extends React.Component {
     let topicInfo = this.state.topicInfo
     let isCollect = this.state.topicInfo.is_collect
     let loading = this.state.loading
-    let richTextSet = {
+    const richTextSet = {
       height: 260
     }
     return loading ? (

@@ -21,7 +21,7 @@ class Collect extends React.Component {
   }
 
   getCollectTopic() {
-    let isLogin = util.isLogin()
+    const isLogin = util.isLogin()
     let { history, match } = this.props
     if (!isLogin) {
       message.warn("您处于未登录状态，2秒后自动跳装至登录页面")
@@ -30,8 +30,8 @@ class Collect extends React.Component {
       }, 2000)
       return false
     }
-    let loginName = JSON.parse(localStorage.getItem("userInfo")).loginname
-    let url = service.USER_COLLECT_TOPIC.replace("{loginname}", loginName)
+    const loginName = JSON.parse(localStorage.getItem("userInfo")).loginname
+    const url = service.USER_COLLECT_TOPIC.replace("{loginname}", loginName)
     this.setState({
       loading: true
     })

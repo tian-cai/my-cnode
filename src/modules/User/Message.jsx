@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import constant from "./../util/constant.js"
 
-class Collect extends React.Component {
+class Message extends React.Component {
   constructor(props) {
     super(props)
     this.markMsg = this.markMsg.bind(this)
@@ -49,4 +49,4 @@ class Collect extends React.Component {
   }
 }
 
-export default Collect
+export default Message

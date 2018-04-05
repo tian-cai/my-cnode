@@ -21,8 +21,8 @@ class TopicList extends React.Component {
 
   //获取主题
   getTopicList(params) {
-    let url = service.GET_TOPICS
-    let that = this
+    const url = service.GET_TOPICS
+    const that = this
     axios
       .get(url, { params })
       .then(response => {
@@ -74,7 +74,7 @@ class TopicList extends React.Component {
 
   render() {
     let topicList = this.state.topicList
-    let tab = constant.tab
+    const tab = constant.tab
     return (
       <div>
         <nav className="block-title">

@@ -25,7 +25,7 @@ class MessageList extends React.Component {
 
   // 获取已读和未读消息
   getMessage() {
-    let isLogin = util.isLogin()
+    const isLogin = util.isLogin()
     let { history, match } = this.props
     if (!isLogin) {
       message.warn("您处于未登录状态，2秒后自动跳装至登录页面")
@@ -34,7 +34,7 @@ class MessageList extends React.Component {
       }, 2000)
       return false
     }
-    let url = service.USER_MESSAGE_ALL
+    const url = service.USER_MESSAGE_ALL
     this.setState({
       loading: true
     })
@@ -51,7 +51,9 @@ class MessageList extends React.Component {
           notReadMsg: response.data.data.hasnot_read_messages,
           loading: false
         })
-        this.props.changeMsgCount()
+        this.props.changeMsgCount(
+          response.data.data.hasnot_read_messages.length
+        )
       })
       .catch(error => {
         this.setState({
@@ -63,8 +65,8 @@ class MessageList extends React.Component {
 
   // 标记全部已读
   markAll() {
-    let url = service.MARK_MESSAGE_ALL
-    let that = this
+    const url = service.MARK_MESSAGE_ALL
+    const that = this
     axios
       .post(url, {
         accesstoken: localStorage.getItem("userToken")
@@ -78,8 +80,8 @@ class MessageList extends React.Component {
   }
 
   markMsg(msgId) {
-    let url = service.MARK_MESSAGE.replace("{msgId}", msgId)
-    let that = this
+    const url = service.MARK_MESSAGE.replace("{msgId}", msgId)
+    const that = this
     axios
       .post(url, {
         accesstoken: localStorage.getItem("userToken")
