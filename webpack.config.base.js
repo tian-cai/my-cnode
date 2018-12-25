@@ -3,30 +3,18 @@ let path = require("path")
 
 let base = {
   entry: __dirname + "/src/index.js",
-  output: {
-    path: __dirname + "/build",
-    filename: "[name]-[hash].js"
-  },
   plugins: [
     new htmlWebpackPlugin({
-      template: "src/index.html"
+      template: "src/index.html",
+      title: "My Cnode",
+      favicon: "src/assets/favicon.png"
     })
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
-      },
-      {
-        test: /\.scss$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
-        include: path.resolve(__dirname, "src")
-      },
-      {
-        test: /\.less$/,
-        use: ["style-loader", "css-loader", "postcss-loader", "less-loader"],
-        include: path.resolve(__dirname, "src")
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
       {
         test: /\.(png|jpg|svg|gif|jpeg)$/i,
@@ -44,6 +32,19 @@ let base = {
         include: path.resolve(__dirname, "src")
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          // 打包第三方库
+          test: /\/node_modules\//,
+          name: "vendor",
+          chunks: "all",
+          minChunks: 1
+        }
+      }
+    }
   }
 }
 module.exports = base

@@ -1,27 +1,14 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
-import TopicList from "./modules/Home/TopicList.jsx"
+import getComponent from "./modules/Common/hoc-async-component"
 
-let TopicDetail, UserDetail, Login, MessageList, Collect, PublishTopic
-
-import("./modules/Home/TopicDetail.jsx").then(module => {
-  TopicDetail = module.default
-})
-import("./modules/User/UserDetail.jsx").then(module => {
-  UserDetail = module.default
-})
-import("./modules/Login/Login.jsx").then(module => {
-  Login = module.default
-})
-import("./modules/User/MessageList.jsx").then(module => {
-  MessageList = module.default
-})
-import("./modules/User/Collect.jsx").then(module => {
-  Collect = module.default
-})
-import("./modules/User/PublishTopic.jsx").then(module => {
-  PublishTopic = module.default
-})
+const TopicList = getComponent(()=> import("./modules/Home/TopicList.jsx"))
+const TopicDetail = getComponent(()=> import("./modules/Home/TopicDetail.jsx"))
+const UserDetail = getComponent(()=> import("./modules/User/UserDetail.jsx"))
+const Login = getComponent(()=> import("./modules/Login/Login.jsx"))
+const MessageList = getComponent(()=> import("./modules/User/MessageList.jsx"))
+const Collect = getComponent(()=> import("./modules/User/Collect.jsx"))
+const PublishTopic = getComponent(()=> import("./modules/User/PublishTopic.jsx"))
 
 class CustomRoute extends React.Component {
   constructor(props) {
