@@ -1,5 +1,6 @@
 let htmlWebpackPlugin = require("html-webpack-plugin")
 let path = require("path")
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 let base = {
   entry: __dirname + "/src/index.js",
@@ -8,6 +9,10 @@ let base = {
       template: "src/index.html",
       title: "My Cnode",
       favicon: "src/assets/favicon.png"
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'prefetch',
+      include: 'asyncChunks'
     })
   ],
   module: {

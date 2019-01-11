@@ -1,8 +1,25 @@
 {
-  "presets": ["es2015", "react", "stage-3"],
+  "presets": [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "react",
+    "stage-3"
+  ],
   "plugins": [
-    ["import", { "libraryName": "antd", "style": "css" }], // `style: true` 会加载 less 文件
-    ["syntax-dynamic-import"],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css"
+      }
+    ],
+    [
+      "syntax-dynamic-import"
+    ],
     [
       "transform-runtime",
       {
