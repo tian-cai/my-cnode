@@ -1,6 +1,7 @@
 let htmlWebpackPlugin = require("html-webpack-plugin")
 let path = require("path")
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const HappyPack = require('happypack');
 
 let base = {
   entry: __dirname + "/src/index.js",
@@ -13,6 +14,10 @@ let base = {
     new PreloadWebpackPlugin({
       rel: 'prefetch',
       include: 'asyncChunks'
+    }),
+    new HappyPack({
+      id: 'js',
+      loaders: ['babel-loader']
     })
   ],
   module: {
@@ -33,7 +38,7 @@ let base = {
       },
       {
         test: /\.(jsx|js)$/,
-        use: ["babel-loader"],
+        use: ["happypack/loader?id=js"],
         include: path.resolve(__dirname, "src")
       }
     ]
