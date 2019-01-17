@@ -17,7 +17,7 @@ let base = {
     }),
     new HappyPack({
       id: 'js',
-      loaders: ['babel-loader']
+      loaders: ['babel-loader?cacheDirectory=true']
     })
   ],
   module: {
