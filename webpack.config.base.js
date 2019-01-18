@@ -2,6 +2,8 @@ let htmlWebpackPlugin = require("html-webpack-plugin")
 let path = require("path")
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const HappyPack = require('happypack');
+const os = require('os');
+const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 let base = {
   entry: __dirname + "/src/index.js",
@@ -17,15 +19,12 @@ let base = {
     }),
     new HappyPack({
       id: 'js',
+      threadPool: happyThreadPool,
       loaders: ['babel-loader?cacheDirectory=true']
     })
   ],
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"],
-      },
       {
         test: /\.(png|jpg|svg|gif|jpeg)$/i,
         use: ["file-loader?name=[name]-[hash].[ext]"],

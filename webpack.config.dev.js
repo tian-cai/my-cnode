@@ -15,5 +15,13 @@ module.exports = merge(base,{
     devtool: "inline-source-map",
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ]
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader", "postcss-loader"],
+            },
+        ]
+    },
 })
