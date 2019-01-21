@@ -9,12 +9,12 @@ module.exports = merge(base, {
     mode: "production",
     output: {
         path: __dirname + "/build",
-        filename: "[name]-[contenthash].js"
+        filename: "[name]-[contenthash:8].js"
     },
     plugins: [
         new cleanWebpackPlugin("build/*"),
         new MiniCssExtractPlugin({
-            filename: '[name]-[contenthash].css',
+            filename: '[name]-[contenthash:8].css',
         }),
     ],
     module: {
